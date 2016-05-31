@@ -2,3 +2,5 @@ build
 node_modules
 .vagrant
 .env
+playbook.retry
+roles/
