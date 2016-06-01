@@ -1,20 +1,17 @@
 import React from 'react';
-
+import UserForm from '../RegistrationForm/RegistrationForm';
+import configureStore from '../../Stores';
 import { Provider } from 'react-redux';
 
-// We'll create this in Step 5.
-import store from '../../Stores/store.js';
-
-// We'll create this in Step 6.
-import UserForm from '../RegistrationForm/RegistrationForm';
+let store = configureStore()
 
 class App extends React.Component {
   render() {
-    return (
-      <Provider store={ store }>
+    return(
+      <Provider store={store}>
         <UserForm />
       </Provider>
-    );
+    )
   }
 }
 

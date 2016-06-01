@@ -17,3 +17,5 @@ class User extends bookshelf.Model {
         return this.forge().query({where:{ email: email }}).fetch();
     }
 }
+
+exports.default = User;

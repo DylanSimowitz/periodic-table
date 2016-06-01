@@ -1,42 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, Form, actions } from 'react-redux-form';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../Actions/';
 
 class UserForm extends React.Component {
-  handleSubmit(user) {
-    let { dispatch } = this.props;
-
-    // Do whatever you like in here.
-    // You can use actions such as:
-    // dispatch(actions.submit('user', somePromise));
-    // etc.
+  constructor() {
+    super()
+  }
+  handleChange = (e) => {
+    this.props.actions.changeUser(e.target.value)
   }
   render() {
-    let { user } = this.props;
-
     return (
-      <Form model="user"
-        onSubmit={(user) => this.handleSubmit(user)}>
-        <Field model="user.name">
-          <label>Username:</label>
-          <input type="text" />
-        </Field>
-
-        <Field model="user.password">
-          <label>Password:</label>
-          <input type="password" />
-        </Field>
-
-        <button type="submit">
-          Submit
-        </button>
-      </Form>
+      <form>
+        <label>Username:</label>
+        <input type="text" value={this.props.name} onChange={(e) => this.props.actions.changeUser(e.target.value)}/>
+        <label>Password:</label>
+        <input type="password" />
+      </form>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return { user: state.user };
+const mapStateToProps = (state) => {
+  return {
+    name: state.name
+  }
 }
 
-export default connect(mapStateToProps)(UserForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm);
