@@ -3,8 +3,11 @@ var webpackConfig = require('../webpack.config');
 var compiler = webpack(webpackConfig);
 var express = require('express');
 var path = require('path')
+var Element = require('./models/element');
 
 var app = express();
+let router = express.Router();
+
 
 app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
@@ -13,15 +16,28 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 var db = require('./database/connect');
-db.knex.schema.createTableIfNotExists('user', require('./tables/user')).then(console.log('created user table'));
+// db.knex.schema.createTableIfNotExists('user', require('./tables/user'));
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 });
-// app.get('/about', function(req, res) {
-//   res.send(404)
-// });
 
+router.route('/elements')
+  .get((req,res) => {
+    Element.fetchAll()
+      .then(model => {
+        res.send(model.toJSON())
+      })
+    })
+router.route('/elements/:element')
+  .get((req,res) => {
+    Element.where('Element', req.params.element)
+      .fetch()
+      .then(model => {
+        res.send(model.toJSON())
+      })
+  })
+app.use('/api', router);
 app.listen(process.env.PORT, function() {
     console.log('Example app listening on port 3000');
 });

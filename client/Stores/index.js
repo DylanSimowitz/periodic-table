@@ -4,8 +4,11 @@ import thunk from 'redux-thunk';
 import reducer from '../Reducers';
 
 export const initialUserState = {
-    name: 'Dylan',
-    password: ''
+  periodicTable: {
+    isFetching: true,
+    elements: [],
+    featuredElement: ''
+  }
 };
 
 export default function configureStore() {

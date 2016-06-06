@@ -1,0 +1,8 @@
+.periodicTable {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1332px;
+  justify-content: center;
+  margin: 15px auto;
+  position: relative;
+}

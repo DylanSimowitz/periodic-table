@@ -1,0 +1,39 @@
+.featuredElement {
+  position: absolute;
+  top: calc(86px / 2);
+  left: calc(74px * 3);
+  border: 1px solid black;
+  margin: 0 0 -1px -1px;
+  width: calc(74px * 8);
+  height: calc(86px * 2);
+  box-sizing: border-box;
+  display: flex;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px;
+}
+.symbol {
+  font-size: 6em;
+  min-width: 33%;
+  text-align: center;
+  line-height: calc(86px * 2);
+  border-right: 1px solid black;
+  padding: 5px;
+}
+.name {
+  font-size: 2.75em;
+  text-align: right;
+}
+.properties {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.property {
+  margin-bottom: 5px;
+}

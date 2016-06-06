@@ -1,0 +1,28 @@
+.element {
+  border: 1px solid black;
+  margin: 0 0 -1px -1px;
+  width: 75px;
+  height: 86px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+}
+.atomicNumber {
+  padding: 0 2px;
+  font-size: 0.75em;
+}
+.symbol {
+  font-size: 1.75em;
+  text-align: center;
+}
+.name {
+  font-size: 0.60em;
+  text-align: center;
+}
+.mass {
+  font-size: 0.75em;
+  text-align: center;
+}

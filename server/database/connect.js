@@ -1,7 +1,5 @@
-//import knex from 'knex';
 var knex = require('knex');
 var bookshelf = require('bookshelf');
-//import bookshelf from 'bookshelf';
 
 var config = knex({
   client: 'mysql',
