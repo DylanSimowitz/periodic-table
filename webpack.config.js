@@ -38,7 +38,7 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            loader: 'style-loader!css-loader?modules&importLoaders=1!postcss-loader'
         },
         {
             test: /\.sass/,
@@ -61,6 +61,7 @@ module.exports = {
             loader: 'url-loader?limit=8192'
         }]
     },
+    postcss: [require('autoprefixer')({browsers: ['last 2 versions']})],
     devServer: {
       stats: 'minimal',
       historyApiFallback: true,
