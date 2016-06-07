@@ -18,19 +18,28 @@ class FeaturedElement extends React.Component {
   render() {
     return (
       <div className={styles.featuredElement}>
-        <div className={styles.symbol}>
-          {this.props.element['Symbol']}
+        <div className={styles.preview}>
+          <div className={styles.atomicNumber}>
+            {this.props.element['Atomic Number']}
+          </div>
+          <div className={styles.atomicWeight}>
+            {this.props.element['Atomic Weight']}
+          </div>
+          <div className={styles.symbol}>
+            {this.props.element['Symbol']}
+          </div>
+
         </div>
         <div className={styles.container}>
           <div className={styles.name}>
             {this.props.element['Element']}
           </div>
           <ul className={styles.properties}>
-            {
+            {/*{
               Object.keys(this.props.element).map((property,item) => {
                 return <li key={item} className={styles.property}>{`${property}: ${this.props.element[property]}`}</li>
               })
-            }
+            }*/}
           </ul>
         </div>
       </div>

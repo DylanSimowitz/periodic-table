@@ -15,13 +15,29 @@
   width: 100%;
   padding: 5px;
 }
-.symbol {
-  font-size: 6em;
+.preview {
   min-width: 33%;
   text-align: center;
-  line-height: calc(86px * 2);
   border-right: 1px solid black;
   padding: 5px;
+  position: relative;
+}
+.symbol {
+  font-size: 6em;
+  line-height: calc(86px * 2);
+}
+.atomicNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  font-size: 1.25em;
+}
+.atomicWeight {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 5px;
+  width: 100%;
 }
 .name {
   font-size: 2.75em;
