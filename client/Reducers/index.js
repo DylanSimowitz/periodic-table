@@ -15,7 +15,7 @@ function reducer(state = [], action) {
         ...state,
         periodicTable: {
           ...state.periodicTable,
-          featuredElement: action.name
+          featuredElement: action.element
         }
       }
     default:

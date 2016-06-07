@@ -26,3 +26,9 @@
   font-size: 0.75em;
   text-align: center;
 }
+
+@media (min-width: 700px) and (max-width: 800px){
+  .element {
+    width: 40px
+  }
+}

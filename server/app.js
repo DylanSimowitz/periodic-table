@@ -29,6 +29,10 @@ router.route('/elements')
         res.send(model.toJSON())
       })
     })
+router.route('/data')
+  .get((req,res) => {
+    res.sendFile(path.join(__dirname, '/static/database.json'))
+  })
 router.route('/elements/:element')
   .get((req,res) => {
     Element.where('Element', req.params.element)

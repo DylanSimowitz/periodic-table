@@ -1,6 +1,7 @@
 const CHANGE_USER = 'CHANGE_USER';
 const RECEIVE_ELEMENTS = 'RECEIVE_ELEMENTS';
 const SET_FEATURED_ELEMENT = 'SET_FEATURED_ELEMENT';
+const API_ENDPOINT = '/api/data'
 
 export function changeUser(name) {
     return {type: CHANGE_USER, name}
@@ -12,12 +13,12 @@ function receiveElements(json) {
 
 export function fetchElements() {
     return dispatch => {
-        return fetch('/api/elements')
+        return fetch(API_ENDPOINT)
           .then(response => response.json())
           .then(json => dispatch(receiveElements(json)))
     }
 }
 
-export function setFeaturedElement(name) {
-  return {type: SET_FEATURED_ELEMENT, name}
+export function setFeaturedElement(element) {
+  return {type: SET_FEATURED_ELEMENT, element}
 }

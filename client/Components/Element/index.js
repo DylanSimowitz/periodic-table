@@ -19,17 +19,17 @@ class Element extends React.Component {
       <div className={styles.element} onMouseOver={this.handleMouseOver}>
         <div className={styles.atomicNumber}>
           <div>
-            {this.props.element['Atomic Number']}
+            {this.props.element.number}
           </div>
         </div>
         <div className={styles.symbol}>
-          {this.props.element['Symbol']}
+          {this.props.element.symbol}
         </div>
         <div className={styles.name}>
-          {this.props.element['Element']}
+          {this.props.element.name}
         </div>
         <div className={styles.mass}>
-          {this.props.element['Atomic Weight'].toFixed(4).replace(/0+$/, '').replace(/\.$/, '')}
+          {parseFloat(this.props.element.weight).toFixed(4).replace(/\.?0+$/, '')}
         </div>
       </div>
     );

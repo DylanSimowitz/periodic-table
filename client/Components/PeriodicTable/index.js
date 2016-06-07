@@ -13,11 +13,21 @@ class PeriodicTable extends React.Component {
   constructor() {
     super()
     this.groups = []
+    this.actinides = {
+      start: 89,
+      end: 103
+    }
+    this.lanthanides = {
+      start: 57,
+      end: 71
+    }
   }
   sortElementsByGroup(elements) {
-    for (let i = 1; i<=32; i++) {
+    for (let i = 1; i<=18; i++) {
       this.groups[i] = elements.filter(element => {
-        return element['Group'] === i
+        if (element.group === i && element.block !== 'f') {
+          return element
+        }
       })
     }
   }
@@ -31,13 +41,14 @@ class PeriodicTable extends React.Component {
     return (
         <div className={styles.periodicTable}>
         {
-          this.groups.map((group,item) => {
+          this.groups.map((group,groupNumber) => {
+            let block;
             let groupElements = group.map(element => {
-              return <Element element={element} key={element['Atomic Number']}/>
+              block = element.block
+              return <Element element={element} key={element.number}/>
             })
-
             return (
-              <Group key={item}>
+              <Group key={groupNumber} block={block}>
                 {groupElements}
               </Group>
             )

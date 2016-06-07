@@ -20,19 +20,19 @@ class FeaturedElement extends React.Component {
       <div className={styles.featuredElement}>
         <div className={styles.preview}>
           <div className={styles.atomicNumber}>
-            {this.props.element['Atomic Number']}
+            {this.props.element.number}
           </div>
           <div className={styles.atomicWeight}>
-            {this.props.element['Atomic Weight']}
+            {this.props.element.weight}
           </div>
           <div className={styles.symbol}>
-            {this.props.element['Symbol']}
+            {this.props.element.symbol}
           </div>
 
         </div>
         <div className={styles.container}>
           <div className={styles.name}>
-            {this.props.element['Element']}
+            {this.props.element.name}
           </div>
           <ul className={styles.properties}>
             {/*{
