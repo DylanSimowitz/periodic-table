@@ -7,7 +7,12 @@ export const initialUserState = {
   periodicTable: {
     isFetching: true,
     elements: [],
-    featuredElement: ''
+    featuredElement: {
+      symbol: 'El',
+      name: 'Element Name',
+      number: 'Atomic Number',
+      weight: 'Atoimc Mass'
+    }
   }
 };
 

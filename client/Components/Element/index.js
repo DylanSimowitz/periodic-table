@@ -15,8 +15,10 @@ class Element extends React.Component {
   }
 
   render() {
+    const blockStyle = styles['block--' + this.props.element.block];
+    const meltStyle = styles.element;
     return (
-      <div className={styles.element} onMouseOver={this.handleMouseOver}>
+      <div className={blockStyle} onMouseOver={this.handleMouseOver}>
         <div className={styles.atomicNumber}>
           <div>
             {this.props.element.number}

@@ -6,8 +6,7 @@ function reducer(state = [], action) {
         periodicTable: {
           ...state.periodicTable,
           isFetching: false,
-          elements: action.elements,
-          featuredElement: action.elements[0]
+          elements: action.elements
         }
       }
     case 'SET_FEATURED_ELEMENT':
