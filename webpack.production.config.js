@@ -3,16 +3,19 @@ var path = require('path');
 
 module.exports = {
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('development')
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
             }
         })
     ],
     entry: [
-        './client/index.js', 'webpack-hot-middleware/client'
+        './client/index.js'
     ],
     output: {
         filename: 'bundle.js',
@@ -56,10 +59,5 @@ module.exports = {
             }
         ]
     },
-    postcss: [require('autoprefixer')({browsers: ['last 2 versions']})],
-    devServer: {
-        stats: 'minimal',
-        historyApiFallback: true,
-        contentBase: './client'
-    }
+    postcss: [require('autoprefixer')({browsers: ['last 2 versions']})]
 }
