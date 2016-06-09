@@ -1,6 +1,3 @@
-var webpack = require('webpack');
-var webpackConfig = require('../webpack.config');
-var compiler = webpack(webpackConfig);
 var express = require('express');
 var path = require('path')
 
@@ -8,6 +5,9 @@ var app = express();
 let router = express.Router();
 
 if (process.env.NODE_ENV === 'development') {
+  var webpack = require('webpack');
+  var webpackConfig = require('../webpack.config');
+  var compiler = webpack(webpackConfig);
   app.use(require('webpack-dev-middleware')(compiler, {
       noInfo: true,
       publicPath: webpackConfig.output.publicPath
