@@ -4,3 +4,4 @@ node_modules
 .env
 playbook.retry
 roles/
+npm-debug.log
