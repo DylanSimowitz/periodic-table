@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Case management for attorneys",
   "main": "index.js",
+  "engines": {
+    "node": "6.2.1",
+    "npm": "3.9.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production node server/app.js",
