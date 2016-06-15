@@ -2,7 +2,7 @@ var knex = require('knex');
 var bookshelf = require('bookshelf');
 
 var config = knex({
-  client: 'mysql',
+  client: 'pg',
   connection: {
     host     : process.env.DB_HOST,
     user     : process.env.DB_USER,
