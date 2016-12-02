@@ -11,7 +11,7 @@ export const initialUserState = {
       symbol: 'El',
       name: 'Element Name',
       number: 'Atomic Number',
-      weight: 'Atoimc Mass'
+      weight: 'Atomic Mass'
     }
   }
 };

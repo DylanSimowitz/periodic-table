@@ -10,7 +10,7 @@ class Element extends React.Component {
     super()
   }
 
-  handleMouseOver = () => {
+  handleClick = () => {
     this.props.actions.setFeaturedElement(this.props.element)
   }
 
@@ -18,7 +18,7 @@ class Element extends React.Component {
     const blockStyle = styles['block--' + this.props.element.block];
     const meltStyle = styles.element;
     return (
-      <div className={blockStyle} onMouseOver={this.handleMouseOver}>
+      <div className={blockStyle} onClick={this.handleClick}>
         <div className={styles.atomicNumber}>
           <div>
             {this.props.element.number}

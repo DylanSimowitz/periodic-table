@@ -2,7 +2,7 @@ import React from 'react';
 import Group from '../Group';
 import Series from '../Series';
 import Element from '../Element';
-import FeaturedElement from '../FeaturedElement';
+import ElementPreview from '../ElementPreview';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../Actions/';
@@ -81,7 +81,7 @@ class PeriodicTable extends React.Component {
             )
           })
         }
-        <FeaturedElement element={this.props.featuredElement}/>
+        <ElementPreview element={this.props.featuredElement}/>
         </div>
     );
   }
