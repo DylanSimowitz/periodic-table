@@ -53,5 +53,9 @@
   padding: 0;
 }
 .property {
-  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2px;
 }

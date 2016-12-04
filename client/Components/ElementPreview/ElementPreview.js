@@ -37,7 +37,7 @@ class ElementPreview extends React.Component {
           <div className={styles.header}>
             <PropertiesPanel properties={this.props.element}/>
           </div>
-          <div className={styles.appearance}>
+          <div className={styles.property}>
             {this.props.element[this.props.property]}
           </div>
         </div>
