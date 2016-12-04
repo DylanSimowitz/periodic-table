@@ -17,6 +17,14 @@ function reducer(state = [], action) {
           featuredElement: action.element
         }
       }
+    case 'SELECT_PROPERTY':
+      return {
+        ...state,
+        periodicTable: {
+            ...state.periodicTable,
+            selectedProperty: action.property
+          }  
+      }
     default:
       return state
   }

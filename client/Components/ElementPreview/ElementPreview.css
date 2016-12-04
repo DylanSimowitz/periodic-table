@@ -1,0 +1,57 @@
+.elementPreview{
+  position: absolute;
+  top: calc(86px / 2);
+  left: calc(74px * 3);
+  border: 1px solid black;
+  margin: 0 0 -1px -1px;
+  width: calc(74px * 8);
+  height: calc(86px * 2);
+  box-sizing: border-box;
+  display: flex;
+}
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.header {
+}
+.preview {
+  min-width: 33%;
+  text-align: center;
+  border-right: 1px solid black;
+  padding: 5px;
+  position: relative;
+}
+.symbol {
+  font-size: 6em;
+  line-height: calc(86px * 2);
+}
+.atomicNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  font-size: 1.25em;
+}
+.atomicWeight {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+.name {
+  position: absolute;
+  top: 5px;
+  font-size: 1.25em;
+  width: 100%;
+}
+.properties {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.property {
+  margin-bottom: 5px;
+}

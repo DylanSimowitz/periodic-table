@@ -1,0 +1,12 @@
+.panel {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid black;
+}
+span {
+  margin-right: 5px;
+}
+select {
+  width: 100%;
+}

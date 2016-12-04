@@ -9,10 +9,11 @@ export const initialUserState = {
     elements: [],
     featuredElement: {
       symbol: 'El',
-      name: 'Element Name',
-      number: 'Atomic Number',
-      weight: 'Atomic Mass'
-    }
+      name: 'Name',
+      number: '#',
+      weight: 'Atomic Mass',
+    },
+    selectedProperty: 'appearance'
   }
 };
 
