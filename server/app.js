@@ -15,7 +15,8 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.use(express.static('public'))
+var staticPath = path.resolve(__dirname, '../public')
+app.use(express.static(staticPath))
 
 router.route('/data')
   .get((req,res) => {
