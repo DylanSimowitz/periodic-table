@@ -5,3 +5,4 @@ node_modules
 playbook.retry
 roles/
 npm-debug.log
+public/bundle.js
