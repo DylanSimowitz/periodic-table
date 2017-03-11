@@ -1,8 +1,1 @@
-build
 node_modules
-.vagrant
-.env
-playbook.retry
-roles/
-npm-debug.log
-public/bundle.js
