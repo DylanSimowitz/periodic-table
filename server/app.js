@@ -17,6 +17,8 @@ const middleware = require('./middleware');
 const services = require('./services');
 const appHooks = require('./hooks');
 
+const mongodb = require('./mongodb');
+
 const app = feathers();
 
 // Load app configuration
@@ -33,6 +35,7 @@ app.use(favicon( path.join(app.get('public'), 'favicon.ico') ));
 
 // Set up Plugins and providers
 app.configure(hooks());
+app.configure(mongodb);
 app.configure(rest());
 app.configure(socketio());
 
