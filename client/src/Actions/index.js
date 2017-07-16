@@ -1,7 +1,7 @@
 const CHANGE_USER = 'CHANGE_USER';
 const RECEIVE_ELEMENTS = 'RECEIVE_ELEMENTS';
 const SET_FEATURED_ELEMENT = 'SET_FEATURED_ELEMENT';
-const API_ENDPOINT = '/api/data'
+const API_ENDPOINT = '/data'
 const SELECT_PROPERTY = 'SELECT_PROPERTY'
 
 export function changeUser(name) {
