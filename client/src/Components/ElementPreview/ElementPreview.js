@@ -7,9 +7,6 @@ import * as actions from '../../Actions/';
 import PropertiesPanel from './PropertiesPanel'
 
 class ElementPreview extends React.Component {
-  constructor() {
-    super()
-  }
   componentDidMount() {
 
   }
@@ -47,7 +44,6 @@ class ElementPreview extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  state;
   return {
     element: state.periodicTable.featuredElement,
     property: state.periodicTable.selectedProperty

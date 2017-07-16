@@ -1,10 +1,12 @@
-import { Route, IndexRoute } from 'react-router'
+import { Route } from 'react-router'
+import React from 'react'
 import PeriodicTable from '../Components/PeriodicTable';
 
 const Routes = () => {
   <Route path="/" component={PeriodicTable}>
-    <Route path=":element" component={FeaturedElement}/>
   </Route>
 }
+
+// <Route path=":element" component={FeaturedElement}/>
 
 export default Routes

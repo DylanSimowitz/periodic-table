@@ -25,6 +25,8 @@ class PeriodicTable extends React.Component {
       this.groups[i] = elements.filter(element => {
         if (element.group === i) {
           return element
+        } else {
+          return false
         }
       })
     }
@@ -33,11 +35,15 @@ class PeriodicTable extends React.Component {
     this.series[0] = elements.filter(element => {
       if (element.number >= 57 && element.number <= 71) {
         return element;
+      } else {
+        return false
       }
     })
     this.series[1] = elements.filter(element => {
       if (element.number >= 89 && element.number <= 103) {
         return element;
+      } else {
+        return false;
       }
     })
   }
@@ -57,7 +63,7 @@ class PeriodicTable extends React.Component {
             let groupElements = group.map(element => {
               block = element.block
               if (groupNumber === 3 && element.number > 40) {
-                return;
+                return false;
               }
               return <Element element={element} key={element.number}/>
             })

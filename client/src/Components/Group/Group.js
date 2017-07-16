@@ -2,9 +2,6 @@ import React from 'react';
 import styles from './Group.css';
 
 class Group extends React.Component {
-  constructor() {
-    super()
-  }
   handleChange = (e) => {
     this.props.actions.changeUser(e.target.value)
   }

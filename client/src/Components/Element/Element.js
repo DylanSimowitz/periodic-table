@@ -6,17 +6,12 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../Actions/';
 
 class Element extends React.Component {
-  constructor() {
-    super()
-  }
-
   handleClick = () => {
     this.props.actions.setFeaturedElement(this.props.element)
   }
 
   render() {
     const blockStyle = styles['block--' + this.props.element.block];
-    const meltStyle = styles.element;
     return (
       <div className={blockStyle} onClick={this.handleClick}>
         <div className={styles.atomicNumber}>
