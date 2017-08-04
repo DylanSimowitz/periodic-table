@@ -1,1 +1,1 @@
-export default from './Element';
+export default from './Element.jsx';

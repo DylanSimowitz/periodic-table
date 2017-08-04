@@ -1,1 +1,1 @@
-export default from './PeriodicTable';
+export default from './PeriodicTable.jsx';

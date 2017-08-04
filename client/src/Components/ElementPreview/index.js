@@ -1,1 +1,1 @@
-export default from './ElementPreview';
+export default from './ElementPreview.jsx';

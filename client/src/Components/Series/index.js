@@ -1,1 +1,1 @@
-export default from './Series';
+export default from './Series.jsx';

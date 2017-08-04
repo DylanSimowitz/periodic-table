@@ -1,14 +1,26 @@
+.link {
+  text-decoration: none;
+  color: black;
+}
 .element {
   border: 1px solid black;
-  margin: 0 0 -1px -1px;
-  width: 75px;
-  height: 86px;
+  margin: 1px;
+  /* margin: 0 0 -1px -1px; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   box-sizing: border-box;
   user-select: none;
-  cursor: pointer;
+  width: 60px;
+  height: 72px;
+  font-size: 0.8em;
+}
+@media (min-width: 800px) {
+  .element {
+    width: 70px;
+    height: 90px;
+    font-size: 1em;
+  }
 }
 .element:hover {
   background-color: white;
@@ -32,25 +44,37 @@
 }
 
 
-.block--s {
+/* .block--s { */
+/*   composes: element; */
+/*   background-color: rgb(79, 163, 62); */
+/* } */
+/* .block--d { */
+/*   composes: element; */
+/*   background-color: rgb(212, 134, 54); */
+/* } */
+/* .block--p { */
+/*   composes: element; */
+/*   background-color: rgb(177, 74, 74); */
+/* } */
+/* .block--f { */
+/*   composes: element; */
+/*   background-color: rgb(60, 181, 208); */
+/* } */
+.block {
   composes: element;
-  background-color: rgb(79, 163, 62);
-}
-.block--d {
-  composes: element;
-  background-color: rgb(212, 134, 54);
-}
-.block--p {
-  composes: element;
-  background-color: rgb(177, 74, 74);
-}
-.block--f {
-  composes: element;
-  background-color: rgb(60, 181, 208);
+  &--s {
+    background-color: rgb(79, 163, 62);
+  }
+  &--d {
+    background-color: rgb(212, 134, 54);
+  }
+  &--p {
+    background-color: rgb(177, 74, 74);
+  }
+  &--f {
+    background-color: rgb(60, 181, 208);
+  }
 }
 
 @media (min-width: 700px) and (max-width: 800px){
-  .element {
-    width: 40px
-  }
 }

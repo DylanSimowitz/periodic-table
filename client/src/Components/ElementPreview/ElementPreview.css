@@ -1,38 +1,35 @@
 .elementPreview{
   position: absolute;
-  top: calc(86px / 2);
-  left: calc(74px * 3);
-  border: 1px solid black;
+  left: 180px;
   margin: 0 0 -1px -1px;
-  width: calc(74px * 8);
-  height: calc(86px * 2);
+  height: calc(90px * 2.5);
   box-sizing: border-box;
   display: flex;
 }
 .container {
   display: flex;
-  width: 100%;
   flex-direction: column;
 }
 .header {
 }
 .preview {
-  min-width: 33%;
+  width: calc(74px * 2.5);
+  box-sizing: border-box;
   text-align: center;
-  border-right: 1px solid black;
+  border: 1px solid black;
   padding: 5px;
   position: relative;
 }
 .symbol {
-  font-size: 6em;
-  line-height: calc(86px * 2);
+  font-size: 5em;
+  position: relative;
+  top: 60px;
 }
 .atomicNumber {
   position: absolute;
   top: 0;
   left: 0;
   padding: 5px;
-  font-size: 1.25em;
 }
 .atomicWeight {
   position: absolute;
@@ -41,8 +38,7 @@
 }
 .name {
   position: absolute;
-  top: 5px;
-  font-size: 1.25em;
+  bottom: 25px;
   width: 100%;
 }
 .properties {
