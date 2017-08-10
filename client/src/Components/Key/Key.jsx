@@ -6,21 +6,21 @@ import styled from 'styled-components';
 import * as actions from '../../Actions/';
 import Block from './Block';
 
-function trendKey(trend) {
-  switch (trend) {
-    case 'block':
-      return <Block />;
-    default:
-      return <div />;
-  }
-}
-
+/* function trendKey(trend) {
+ *   switch (trend) {
+ *     case 'block':
+ *       return <Block />;
+ *     default:
+ *       return <div />;
+ *   }
+ * }
+ * */
 let Key = props => (
   <div {...props}>
     <div>
       <h1>{props.trend}</h1>
     </div>
-    {trendKey(props.trend)}
+    <Block />
     <div>
       {props.featuredElement.electronConfiguration}
     </div>

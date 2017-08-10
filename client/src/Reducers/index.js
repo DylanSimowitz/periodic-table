@@ -19,6 +19,11 @@ function reducer(state = [], action) {
         ...state,
         selectedProperty: action.property,
       };
+    case 'SELECT_TREND':
+      return {
+        ...state,
+        trend: action.trend,
+      };
     default:
       return state;
   }

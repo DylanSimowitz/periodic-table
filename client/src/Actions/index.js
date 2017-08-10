@@ -3,6 +3,7 @@ const RECEIVE_ELEMENTS = 'RECEIVE_ELEMENTS';
 const SET_FEATURED_ELEMENT = 'SET_FEATURED_ELEMENT';
 const API_ENDPOINT = 'http://localhost:3030/elements';
 const SELECT_PROPERTY = 'SELECT_PROPERTY';
+const SELECT_TREND = 'SELECT_TREND';
 
 export function changeUser(name) {
   return { type: CHANGE_USER, name };
@@ -34,4 +35,8 @@ export function setFeaturedElement(element) {
     }
     return dispatch({ type: SET_FEATURED_ELEMENT, element });
   };
+}
+
+export function selectTrend(trend) {
+  return { type: SELECT_TREND, trend };
 }

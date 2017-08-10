@@ -4,15 +4,27 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import * as actions from '../../Actions/';
 
-const Container = props => (
-  <div>
-    <h1>hello</h1>
-    {props.children}
-  </div>
-);
+class Container extends React.Component {
+  handleChange = (event) => {
+    this.props.actions.selectTrend(event.target.value);
+  }
+
+  render() {
+    return (
+      <div>
+        <select value={this.props.trend} onChange={this.handleChange}>
+          <option value="block">Block</option>
+          <option value="state">Matter State</option>
+        </select>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   featuredElement: state.table.featuredElement,
+  trend: state.table.trend,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,6 +32,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 Container.propTypes = {
+  trend: PropTypes.string.isRequired,
+  actions: PropTypes.objectOf(PropTypes.func).isRequired,
   children: PropTypes.element.isRequired,
 };
 
