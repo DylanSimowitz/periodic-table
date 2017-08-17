@@ -39,7 +39,7 @@ let Key = (props) => {
           </ul>
         </div>
       );
-    case 'state':
+    case 'phase':
       return (
         <div {...props}>
           <div>

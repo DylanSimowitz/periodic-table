@@ -15,18 +15,20 @@ import Block from './Block';
  *   }
  * }
  * */
-let Key = props => (
-  <div {...props}>
-    <div>
-      <h1>{props.trend}</h1>
+let Key = (props) => {
+  const { className, ...rest } = props; // eslint-disable-line
+  return (
+    <div className={className}>
+      <div>
+        <h1>{props.trend}</h1>
+      </div>
+      <Block />
+      <div>
+        {props.featuredElement.electronConfiguration}
+      </div>
     </div>
-    <Block />
-    <div>
-      {props.featuredElement.electronConfiguration}
-    </div>
-  </div>
-);
-
+  );
+};
 Key = styled(Key)`
   box-sizing: border-box;
   display: flex;

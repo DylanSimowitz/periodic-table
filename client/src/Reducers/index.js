@@ -4,15 +4,15 @@ function reducer(state = [], action) {
       return {
         ...state,
         isLoading: false,
-        elements: action.elements,
+        elements: action.elements[0],
       };
     case 'SET_FEATURED_ELEMENT':
       return {
         ...state,
-        featuredElement:
-        state.elements.find(element => (
-          element.name.toLowerCase() === action.element || element.name === action.element.name
-        )),
+        featuredElement: action.element,
+        // state.elements.find(element => (
+        //   element.name.toLowerCase() === action.element || element.name === action.element.name
+        // )),
       };
     case 'SELECT_PROPERTY':
       return {

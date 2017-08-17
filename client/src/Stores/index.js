@@ -6,14 +6,14 @@ import reducer from '../Reducers';
 export const initialUserState = {
   table: {
     isLoading: true,
-    elements: [],
+    elements: {},
     featuredElement: {
       symbol: 'El',
       name: 'Name',
       number: '#',
       weight: 'Atomic Mass',
     },
-    trend: 'block',
+    trend: 'Block',
     selectedProperty: 'appearance',
   },
 };

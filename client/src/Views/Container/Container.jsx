@@ -13,8 +13,8 @@ class Container extends React.Component {
     return (
       <div>
         <select value={this.props.trend} onChange={this.handleChange}>
-          <option value="block">Block</option>
-          <option value="state">Matter State</option>
+          <option value="Block">Block</option>
+          <option value="Phase">Matter Phase</option>
         </select>
         {this.props.children}
       </div>

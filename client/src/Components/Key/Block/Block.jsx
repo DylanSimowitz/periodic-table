@@ -19,16 +19,18 @@ const KeyItem = styled.li`
   }
 `;
 
-const Block = props => (
-  <ul {...props}>
-    {
-      Object.keys(props.theme.trend[props.trend]).map(key => (
-        <KeyItem color={props.theme.trend[props.trend][key]}>{`${key}`}</KeyItem>
-      ))
-    }
-  </ul>
-);
-
+const Block = (props) => {
+  const { className, ...rest } = props; // eslint-disable-line
+  return (
+    <ul className={className}>
+      {
+        Object.keys(props.theme.trend[props.trend]).map(key => (
+          <KeyItem color={props.theme.trend[props.trend][key]} key={key}>{`${key}`}</KeyItem>
+        ))
+      }
+    </ul>
+  );
+};
 Block.propTypes = {
   theme: PropTypes.shape({
     trend: PropTypes.object,

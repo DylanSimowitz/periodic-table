@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongo
     command:
-      'bash -c "mongoimport --drop --host mongo --type json --db=periodic_api --file /tmp/seed/elements.json --jsonArray"'
+      'bash -c "mongoimport --drop --host mongo --type json --db=periodic_api --file /tmp/seed/elements.json"'
 
 networks:
   default:
