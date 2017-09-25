@@ -1,32 +1,35 @@
-// ./store.js
-import {createStore, applyMiddleware, compose} from 'redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducer from '../Reducers';
 
 export const initialUserState = {
-  periodicTable: {
-    isFetching: true,
-    elements: [],
+  table: {
+    isLoading: true,
+    elements: {},
     featuredElement: {
       symbol: 'El',
       name: 'Name',
       number: '#',
       weight: 'Atomic Mass',
     },
-    selectedProperty: 'appearance'
-  }
+    trend: 'Block',
+    selectedProperty: 'appearance',
+  },
 };
 
 export default function configureStore() {
   return createStore(
-    reducer,
+    combineReducers({
+      table: reducer,
+      routing: routerReducer,
+    }),
     initialUserState,
     compose(
       applyMiddleware(
-        thunk
+        thunk,
       ),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
-    )
-
-  )
+      window.devToolsExtension ? window.devToolsExtension() : f => f,
+    ),
+  );
 }

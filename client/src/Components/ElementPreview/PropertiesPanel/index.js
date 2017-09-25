@@ -1,1 +1,1 @@
-export default from './PropertiesPanel'
+export default from './PropertiesPanel.jsx';

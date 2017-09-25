@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  periodic-table:
+    image: periodic-table
+    expose:
+      - 3030
+    labels:
+      - "traefik.port=3030"
+      - "traefik.frontend.rule=Host:dylan.simowitz.com;PathPrefix:/elements"
+      - "traefik.backend=dylan-elements"
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+  mongo:
+    image: mongo
+    expose:
+      - 27017
+  seed:
+    image: mongo
+    volumes:
+      - ./server/seed/:/tmp/seed/
+    depends_on:
+      - mongo
+    command:
+      'bash -c "mongoimport --drop --host mongo --type json --db=periodic_api --file /tmp/seed/elements.json"'
+
+
+networks:
+  default:
+    external:
+      name: web

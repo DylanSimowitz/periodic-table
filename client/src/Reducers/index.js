@@ -3,30 +3,29 @@ function reducer(state = [], action) {
     case 'RECEIVE_ELEMENTS':
       return {
         ...state,
-        periodicTable: {
-          ...state.periodicTable,
-          isFetching: false,
-          elements: action.elements
-        }
-      }
+        isLoading: false,
+        elements: action.elements[0],
+      };
     case 'SET_FEATURED_ELEMENT':
       return {
         ...state,
-        periodicTable: {
-          ...state.periodicTable,
-          featuredElement: action.element
-        }
-      }
+        featuredElement: action.element,
+        // state.elements.find(element => (
+        //   element.name.toLowerCase() === action.element || element.name === action.element.name
+        // )),
+      };
     case 'SELECT_PROPERTY':
       return {
         ...state,
-        periodicTable: {
-            ...state.periodicTable,
-            selectedProperty: action.property
-          }  
-      }
+        selectedProperty: action.property,
+      };
+    case 'SELECT_TREND':
+      return {
+        ...state,
+        trend: action.trend,
+      };
     default:
-      return state
+      return state;
   }
 }
 export default reducer;
