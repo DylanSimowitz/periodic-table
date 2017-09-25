@@ -1,4 +1,10 @@
 {
-  "host": "periodic-api-app.feathersjs.com",
-  "port": "PORT"
+  "host": "0.0.0.0/elements",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://mongo:27017/periodic_api"
 }

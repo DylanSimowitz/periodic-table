@@ -6,43 +6,40 @@ import styled from 'styled-components';
 import * as actions from '../../Actions/';
 import Block from './Block';
 
-/* function trendKey(trend) {
- *   switch (trend) {
- *     case 'block':
- *       return <Block />;
- *     default:
- *       return <div />;
- *   }
- * }
- * */
 let Key = (props) => {
   const { className, ...rest } = props; // eslint-disable-line
   return (
     <div className={className}>
-      <div>
-        <h1>{props.trend}</h1>
-      </div>
-      <Block />
-      <div>
-        {props.featuredElement.electronConfiguration}
+      <h1 style={{ margin: '0' }}>{props.trend}</h1>
+      <div style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center' }}>
+        <Block />
+        <div>
+          {props.featuredElement.electronConfiguration}
+        </div>
       </div>
     </div>
   );
 };
+
 Key = styled(Key)`
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: center;
   border: 1px solid black;
   position: absolute;
-  left: 175px;
-  height: 265px;
-  width: 695px;
+  left: 310px;
+  height: 210px;
+  width: 525px;
   ul {
     list-style: none;
   }
+  @media (min-width: 800px) {
+    left: 250px;
+    width: 615px;
+    height: 265px;
+  }
 `;
-
 
 const mapStateToProps = state => ({
   trend: state.table.trend,

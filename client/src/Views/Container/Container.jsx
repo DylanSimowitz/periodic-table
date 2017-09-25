@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import React from 'react';
+import styled from 'styled-components';
 import * as actions from '../../Actions/';
+
+const Styles = styled.select`
+  width: 100%;
+`;
 
 class Container extends React.Component {
   handleChange = (event) => {
@@ -12,10 +17,10 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <select value={this.props.trend} onChange={this.handleChange}>
+        <Styles value={this.props.trend} onChange={this.handleChange}>
           <option value="Block">Block</option>
           <option value="Phase">Matter Phase</option>
-        </select>
+        </Styles>
         {this.props.children}
       </div>
     );

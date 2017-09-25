@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../Element/Element.css';
-
+import { ElementDiv } from '../Element';
 
 const ElementPlaceholder = props =>
-  (<div className={styles.element}>
-    <div className={styles.name}>
+  (<ElementDiv>
+    <div className="name">
       {props.label}
       <br />
       [{props.range}]
     </div>
-  </div>);
+  </ElementDiv>);
 
 ElementPlaceholder.propTypes = {
   label: PropTypes.string,

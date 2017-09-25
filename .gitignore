@@ -7,3 +7,5 @@ roles/
 npm-debug.log
 public/bundle.js
 server_2
+.dockerignore
+docker-compose.dev.yml

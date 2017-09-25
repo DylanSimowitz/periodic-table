@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Group.css';
+import styled from 'styled-components';
 
-const Group = props => (
-  <div className={styles.group}>
+const Group = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  margin-bottom: 43px;
+`;
+
+const Component = props => (
+  <Group>
     {props.children}
-  </div>
+  </Group>
 );
 
-Group.propTypes = {
+Component.propTypes = {
   children: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default Group;
-
- /* children: PropTypes.arrayOf(PropTypes.element).isRequired, */
+export default Component;

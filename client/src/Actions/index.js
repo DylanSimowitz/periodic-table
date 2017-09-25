@@ -1,7 +1,8 @@
 const CHANGE_USER = 'CHANGE_USER';
 const RECEIVE_ELEMENTS = 'RECEIVE_ELEMENTS';
 const SET_FEATURED_ELEMENT = 'SET_FEATURED_ELEMENT';
-const API_ENDPOINT = 'http://localhost:3030/elements';
+const API_ENDPOINT = '/elements/elements';
+// const API_ENDPOINT = 'http://localhost:3030/elements/elements';
 const SELECT_PROPERTY = 'SELECT_PROPERTY';
 const SELECT_TREND = 'SELECT_TREND';
 
@@ -30,10 +31,10 @@ export function setFeaturedElement(element) {
     const state = getState();
     if (state.table.isLoading) {
       return dispatch(fetchElements()).then(() => {
-        dispatch({ type: SET_FEATURED_ELEMENT, element });
+        dispatch({ type: SET_FEATURED_ELEMENT, element: state.table.elements[element] });
       });
     }
-    return dispatch({ type: SET_FEATURED_ELEMENT, element });
+    return dispatch({ type: SET_FEATURED_ELEMENT, element: state.table.elements[element] });
   };
 }
 

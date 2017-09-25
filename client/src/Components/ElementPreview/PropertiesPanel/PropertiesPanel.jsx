@@ -1,8 +1,21 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { selectProperty } from '../../../Actions';
-import styles from './PropertiesPanel.css';
+
+const Styles = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  .span {
+    margin-right: 5px;
+  }
+  .select {
+    width: 100%;
+  }
+`;
 
 class PropertiesPanel extends Component {
 
@@ -13,17 +26,16 @@ class PropertiesPanel extends Component {
   render() {
     const { properties } = this.props;
     return (
-      <div className={styles.panel}>
-        <span>Property:</span>
-        <select onChange={this.handleChange} value={this.props.selectedProperty}>
+      <Styles>
+        <span className="span">Property:</span>
+        <select className="select" onChange={this.handleChange} value={this.props.selectedProperty}>
           { // eslint-disable-next-line
             Object.keys(properties).map((property, index) => <option value={property} key={index}>{property}</option>)
           }
         </select>
-      </div>
+      </Styles>
     );
   }
-
 }
 
 const mapStateToProps = state => ({ selectedProperty: state.table.selectedProperty });

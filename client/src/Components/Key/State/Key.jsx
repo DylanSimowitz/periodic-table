@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-/* import styles from './Key.css'; */
 import * as actions from '../../Actions/';
 
 const KeyItem = styled.li`

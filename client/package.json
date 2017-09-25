@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "babel-preset-stage-1": "^6.24.1",
+    "directory-named-webpack-plugin": "^2.2.3",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
@@ -42,7 +43,8 @@
     "react-dom": "^15.6.1",
     "react-error-overlay": "^1.0.9",
     "react-redux": "^5.0.5",
-    "react-router": "3",
+    "react-router": "4",
+    "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
@@ -60,6 +62,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
+  "homepage": "/elements",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"

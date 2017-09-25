@@ -1,13 +1,12 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import styles from './Element.css';
 import * as actions from '../../Actions/';
 
-const ElementDiv = styled.div`
+export const ElementDiv = styled.div`
   background-color: ${props => props.color};
   border: 1px solid black;
   margin: 1px;
@@ -27,6 +26,27 @@ const ElementDiv = styled.div`
     height: 90px;
     font-size: 1em;
   }
+  .atomicNumber {
+    padding: 0 2px;
+    font-size: 0.75em;
+  }
+  .symbol {
+    font-size: 1.75em;
+    text-align: center;
+  }
+  .name {
+    font-size: 0.60em;
+    text-align: center;
+  }
+  .mass {
+    font-size: 0.75em;
+    text-align: center;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
 
 class Element extends React.Component {
@@ -38,28 +58,26 @@ class Element extends React.Component {
   }
 
   render() {
-    /* const blockStyle = styles[`block--${this.props.element.block}`]; */
     return (
-      <Link className={styles.link} to={`/elements/${this.props.Name}`}>
+      <StyledLink to={`/elements/${this.props.Name}`}>
         <ElementDiv color={this.props.color} onMouseEnter={this.handleHover}>
-          {/* <div className={`${styles.block} ${blockStyle}`} onMouseEnter={this.handleHover}> */}
-          <div className={styles.atomicNumber}>
+          <div className="atomicNumber">
             <div>
               {this.props.AtomicNumber}
             </div>
           </div>
-          <div className={styles.symbol}>
+          <div className="symbol">
             {this.props.Abbreviation}
           </div>
-          <div className={styles.name}>
+          <div className="name">
             {this.props.Name}
           </div>
-          <div className={styles.mass}>
+          <div className="mass">
             {parseFloat(this.props.AtomicMass).toFixed(4).replace(/\.?0+$/, '')}
           </div>
           {/* </div> */}
         </ElementDiv>
-      </Link>
+      </StyledLink>
     );
   }
 }

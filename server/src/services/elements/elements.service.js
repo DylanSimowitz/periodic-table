@@ -10,10 +10,10 @@ module.exports = function () {
   const options = { };
 
   // Initialize our service with any options it requires
-  app.use('/elements', createService(options));
+  app.use('/elements/elements', createService(options));
 
   // Get our initialized service so that we can register hooks and filters
-  const service = app.service('elements');
+  const service = app.service('elements/elements');
 
   mongoClient.then(db => {
     service.Model = db.collection('elements');

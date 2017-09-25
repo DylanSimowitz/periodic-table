@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Series.css';
+import styled from 'styled-components';
 
-const Series = props => (
-  <div className={styles.series}>
+const Series = styled.div`
+  display: flex
+`;
+
+const Component = props => (
+  <Series>
     {props.children}
-  </div>
+  </Series>
 );
 
-Series.propTypes = {
+Component.propTypes = {
   children: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-export default Series;
+export default Component;

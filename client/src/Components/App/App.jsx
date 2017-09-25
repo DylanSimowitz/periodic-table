@@ -1,15 +1,12 @@
 import 'normalize.css';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import configureStore from '../../Stores';
 import routes from '../../Routes';
-import './App.css';
 
 const store = configureStore();
-const history = syncHistoryWithStore(browserHistory, store);
 
 const theme = {
   trend: {
@@ -31,9 +28,9 @@ const theme = {
 const App = () => (
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <Router history={history}>
+      <BrowserRouter basename="/elements">
         {routes}
-      </Router>
+      </BrowserRouter>
     </Provider>
   </ThemeProvider>
 );

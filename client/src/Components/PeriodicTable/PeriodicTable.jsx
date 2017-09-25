@@ -1,16 +1,23 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withTheme } from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { withTheme } from 'styled-components';
 import Group from '../Group';
 import Series from '../Series';
 import Element from '../Element';
 import Key from '../Key';
-import ElementPlaceholder from '../ElementPlaceholder/index';
+import ElementPlaceholder from '../ElementPlaceholder';
 import * as actions from '../../Actions/';
 
-import styles from './PeriodicTable.css';
+const StyledPeriodicTable = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 1332px;
+  justify-content: center;
+  margin: 15px auto;
+  position: relative;
+`;
 
 
 class PeriodicTable extends React.Component {
@@ -40,18 +47,18 @@ class PeriodicTable extends React.Component {
     }
   }
   sortElementsBySeries(elements) {
-    this.series[0] = Object.keys(elements).filter((element) => {
-      if (elements[element].category === 8) {
-        return elements[element];
-      }
-      return false;
-    }).sort((a, b) => a.number - b.number);
-    this.series[1] = Object.keys(elements).filter((element) => {
-      if (elements[element].category === 9) {
-        return elements[element];
-      }
-      return false;
-    }).sort((a, b) => a.number - b.number);
+    for (let i = 0; i < 2; i += 1) {
+      this.series[i] = Object.keys(elements).filter((element) => {
+        const atomicnumber = elements[element].AtomicNumber;
+        if (i === 0 && atomicnumber >= 57 && atomicnumber <= 71) {
+          return elements[element];
+        }
+        if (i === 1 && atomicnumber >= 89 && atomicnumber <= 103) {
+          return elements[element];
+        }
+        return false;
+      });
+    }
   }
   elementColor(element) {
     let property;
@@ -72,7 +79,7 @@ class PeriodicTable extends React.Component {
   }
   render() {
     return (
-      <div className={styles.periodicTable}>
+      <StyledPeriodicTable>
         <Key />
         {
           this.groups.map((group, groupNumber) => {
@@ -86,6 +93,8 @@ class PeriodicTable extends React.Component {
               return <Element Abbreviation={Abbreviation} AtomicNumber={AtomicNumber} AtomicMass={AtomicMass} Name={Name} key={AtomicNumber} color={this.elementColor(this.props.elements[element])} />; // eslint-disable-line
             });
             if (groupNumber === 3) {
+              groupElements.pop();
+              groupElements.pop();
               groupElements.push(<ElementPlaceholder key="Lanthanides" label="Lanthanides" range="57-71" />, <ElementPlaceholder key="Actinides" label="Actinides" range="89-103" />);
             }
             return ( //eslint-disable-next-line
@@ -110,7 +119,7 @@ class PeriodicTable extends React.Component {
           })
         }
         {this.props.children}
-      </div>
+      </StyledPeriodicTable>
     );
   }
 }
@@ -135,7 +144,7 @@ PeriodicTable.propTypes = {
 };
 
 PeriodicTable.defaultProps = {
-  children: {},
+  children: <div></div>,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withTheme(PeriodicTable));
