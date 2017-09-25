@@ -2,7 +2,7 @@ version: '2'
 
 services:
   periodic-table:
-    image: periodic-table
+    image: registry.gitlab.simowitz.com/dsimowitz/periodic-table
     expose:
       - 3030
     labels:
