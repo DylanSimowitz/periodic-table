@@ -8,7 +8,10 @@ import PropertiesPanel from './PropertiesPanel';
 
 const StyledElementPreview = styled.div`
   position: absolute;
-  left: 180px;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: 0 0 -1px -1px;
   height: calc(90px * 2.5);
   box-sizing: border-box;
@@ -76,25 +79,26 @@ class ElementPreview extends React.Component {
     }
   }
   render() {
+    const { AtomicNumber, AtomicMass, Abbreviation, Name } = this.props.featuredElement;
     return (
       <StyledElementPreview>
         <div className="preview">
           <div className="atomicNumber">
-            {this.props.featuredElement.number}
+            {AtomicNumber}
           </div>
           <div className="atomicWeight">
-            {this.props.featuredElement.weight}
+            {AtomicMass}
           </div>
           <div className="symbol">
-            {this.props.featuredElement.symbol}
+            {Abbreviation}
           </div>
           <div className="name">
-            {this.props.featuredElement.name}
+            {Name}
           </div>
         </div>
         <div className="container">
           <div className="header">
-            <PropertiesPanel properties={this.props.featuredElement} />
+            <PropertiesPanel properties={Object.getOwnPropertyNames(this.props.featuredElement)} />
           </div>
           <div className="property">
             {this.props.featuredElement[this.props.property]}
@@ -119,10 +123,10 @@ ElementPreview.propTypes = {
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
   property: PropTypes.string.isRequired,
   featuredElement: PropTypes.shape({
-    number: PropTypes.int,
-    symbol: PropTypes.string,
-    name: PropTypes.string,
-    weight: PropTypes.int,
+    AtomicNumber: PropTypes.int,
+    Abbreviation: PropTypes.string,
+    Name: PropTypes.string,
+    AtomicMass: PropTypes.int,
   }).isRequired,
 };
 

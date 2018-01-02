@@ -6,61 +6,114 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as actions from '../../Actions/';
 
-export const ElementDiv = styled.div`
+function trendStyles(props) {
+  const largestRadius = 298;
+  const AtomicRadius = props.AtomicRadius ? `${props.AtomicRadius.split(' ')[0]}0` : props.AtomicRadius;
+  switch (props.trend) {
+    case 'AtomicRadius':
+      if (!AtomicRadius) {
+        return `
+          height: 60px;
+          border: none;
+          background-color: white;
+          @media (min-width: 800px) {
+            height: 70px;
+          }
+          .atomicNumber,
+          .name,
+          .mass {
+            display: none;
+          }
+        `;
+      }
+      return `
+        background-color: ${props.color};
+        border-radius: 50%;
+        height: 60px;
+        transform: scale(${AtomicRadius / largestRadius});
+        transition: transform 0.1s, color 0.1s, background-color 0.1s;
+        @media (min-width: 800px) {
+          height: 70px;
+        }
+        .atomicNumber,
+        .name,
+        .mass {
+          display: none;
+        }
+      `;
+    default:
+      return '';
+  }
+}
+
+export const StyledElement = styled.div`
   background-color: ${props => props.color};
   border: 1px solid black;
-  margin: 1px;
+  height: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   box-sizing: border-box;
   user-select: none;
-  width: 60px;
-  height: 72px;
   font-size: 0.8em;
   &:hover {
     background-color: white;
+    color: black;
+  }
+  ${props => trendStyles(props)}
+  .atomicNumber {
+    padding: 0 2px;
+    font-size: 0.85em;
+  }
+  .symbol {
+    font-size: 1.95em;
+    text-align: center;
+  }
+  .name {
+    font-size: 0.80em;
+    text-align: center;
+  }
+  .label{
+    font-size: 0.80em;
+    text-align: center;
+  }
+  .mass {
+    font-size: 0.85em;
+    text-align: center;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  width: 60px;
+  height: 72px;
+  margin: 1px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    .element {
+      transform: scale(1);
+    }
   }
   @media (min-width: 800px) {
     width: 70px;
     height: 90px;
     font-size: 1em;
   }
-  .atomicNumber {
-    padding: 0 2px;
-    font-size: 0.75em;
-  }
-  .symbol {
-    font-size: 1.75em;
-    text-align: center;
-  }
-  .name {
-    font-size: 0.60em;
-    text-align: center;
-  }
-  .mass {
-    font-size: 0.75em;
-    text-align: center;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: black;
 `;
 
 class Element extends React.Component {
   handleClick = () => {
     this.props.actions.setFeaturedElement(this.props.Name);
   }
-  handleHover = () => {
-    this.props.actions.setFeaturedElement(this.props.Name);
-  }
+  capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 
   render() {
     return (
-      <StyledLink to={`/elements/${this.props.Name}`}>
-        <ElementDiv color={this.props.color} onMouseEnter={this.handleHover}>
+      <StyledLink to={`/${this.props.Name}`} color={this.props.color} >
+        <StyledElement className="element" color={this.props.color} onMouseEnter={this.handleHover} {...this.props}>
           <div className="atomicNumber">
             <div>
               {this.props.AtomicNumber}
@@ -70,19 +123,19 @@ class Element extends React.Component {
             {this.props.Abbreviation}
           </div>
           <div className="name">
-            {this.props.Name}
+            {this.capitalize(this.props.Name)}
           </div>
           <div className="mass">
             {parseFloat(this.props.AtomicMass).toFixed(4).replace(/\.?0+$/, '')}
           </div>
-          {/* </div> */}
-        </ElementDiv>
+        </StyledElement>
       </StyledLink>
     );
   }
 }
 
-const mapStateToProps = () => ({
+const mapStateToProps = state => ({
+  trend: state.table.trend,
 });
 
 const mapDispatchToProps = dispatch => ({

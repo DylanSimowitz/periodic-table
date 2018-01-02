@@ -7,22 +7,21 @@ import * as actions from '../../Actions/';
 
 const StyledSelect = styled.select`
   width: 100%;
+  height: 30px;
 `;
 
-class Container extends React.Component {
+class Trend extends React.Component {
   handleChange = (event) => {
     this.props.actions.selectTrend(event.target.value);
   }
 
   render() {
     return (
-      <div>
-        <StyledSelect value={this.props.trend} onChange={this.handleChange}>
-          <option value="Block">Block</option>
-          <option value="Phase">Matter Phase</option>
-        </StyledSelect>
-        {this.props.children}
-      </div>
+      <StyledSelect value={this.props.trend} onChange={this.handleChange}>
+        <option value="Block">Block</option>
+        <option value="Phase">Phase</option>
+        <option value="AtomicRadius">Atomic Radius</option>
+      </StyledSelect>
     );
   }
 }
@@ -36,10 +35,9 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch),
 });
 
-Container.propTypes = {
+Trend.propTypes = {
   trend: PropTypes.string.isRequired,
   actions: PropTypes.objectOf(PropTypes.func).isRequired,
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Container);
+export default connect(mapStateToProps, mapDispatchToProps)(Trend);

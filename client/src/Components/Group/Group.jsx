@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import GroupLabel from './Label'
 
-const Group = styled.div`
+const StyledGroup = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -10,14 +11,16 @@ const Group = styled.div`
   margin-bottom: 43px;
 `;
 
-const Component = props => (
-  <Group>
+const Group = props => (
+  <StyledGroup {...props}>
+    <GroupLabel group={props.group} />
     {props.children}
-  </Group>
+  </StyledGroup>
 );
 
-Component.propTypes = {
+Group.propTypes = {
   children: PropTypes.arrayOf(PropTypes.any).isRequired,
+  group: PropTypes.number.isRequired,
 };
 
-export default Component;
+export default Group;

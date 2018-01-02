@@ -1,5 +1,20 @@
 function reducer(state = [], action) {
   switch (action.type) {
+    case 'FEATURED_SERIES':
+      return {
+        ...state,
+        featuredSeries: action.series,
+      };
+    case 'FEATURED_GROUP':
+      return {
+        ...state,
+        featuredGroup: action.group,
+      };
+    case 'FEATURED_KEY_ITEM':
+      return {
+        ...state,
+        featuredKeyItem: action.item,
+      };
     case 'RECEIVE_ELEMENTS':
       return {
         ...state,

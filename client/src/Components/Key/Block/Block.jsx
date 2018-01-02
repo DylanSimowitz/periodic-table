@@ -1,31 +1,16 @@
 import { connect } from 'react-redux';
-import styled, { withTheme } from 'styled-components';
+import { withTheme } from 'styled-components';
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const KeyItem = styled.li`
-  display: flex;
-  align-items: center;
-  &:before {
-    content: '';
-    background-color: ${props => props.color};
-    height: 32px;
-    width: 32px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-    margin-bottom: 4px;
-  }
-`;
+import KeyItem from '../KeyItem';
 
 const Block = (props) => {
   const { className, ...rest } = props; // eslint-disable-line
   return (
     <ul className={className}>
       {
-        Object.keys(props.theme.trend[props.trend]).map(key => (
-          <KeyItem color={props.theme.trend[props.trend][key]} key={key}>{`${key}`}</KeyItem>
+        Object.keys(props.theme.present.trend[props.trend]).map(key => (
+          <KeyItem color={props.theme.present.trend[props.trend][key]} key={key} label={key} />
         ))
       }
     </ul>

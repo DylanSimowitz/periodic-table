@@ -3,14 +3,16 @@ import { bindActionCreators } from 'redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import * as actions from '../../Actions/';
+import * as actions from '../../Actions';
 import Block from './Block';
+import Trend from '../Trend';
 
 let Key = (props) => {
   const { className, ...rest } = props; // eslint-disable-line
   return (
     <div className={className}>
-      <h1 style={{ margin: '0' }}>{props.trend}</h1>
+      <Trend />
+      <h1 style={{ margin: '0' }}>{props.trend.match(/[A-Z][a-z]+/g).join(' ')}</h1>
       <div style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center' }}>
         <Block />
         <div>
@@ -35,9 +37,9 @@ Key = styled(Key)`
     list-style: none;
   }
   @media (min-width: 800px) {
-    left: 250px;
+    left: 215px;
     width: 615px;
-    height: 265px;
+    height: 255px;
   }
 `;
 

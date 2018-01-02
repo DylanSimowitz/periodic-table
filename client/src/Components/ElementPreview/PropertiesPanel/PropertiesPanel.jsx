@@ -30,7 +30,7 @@ class PropertiesPanel extends Component {
         <span className="span">Property:</span>
         <select className="select" onChange={this.handleChange} value={this.props.selectedProperty}>
           { // eslint-disable-next-line
-            Object.keys(properties).map((property, index) => <option value={property} key={index}>{property}</option>)
+            properties.map((property, index) => <option value={property} key={index}>{property.split(/(?=[A-Z])/).join(" ")}</option>)
           }
         </select>
       </Styles>
@@ -43,7 +43,7 @@ const mapStateToProps = state => ({ selectedProperty: state.table.selectedProper
 PropertiesPanel.propTypes = {
   selectProperty: PropTypes.func.isRequired,
   selectedProperty: PropTypes.string.isRequired,
-  properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  properties: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default connect(mapStateToProps, { selectProperty })(PropertiesPanel);

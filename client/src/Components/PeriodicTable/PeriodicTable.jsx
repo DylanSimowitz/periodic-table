@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { withTheme } from 'styled-components';
+import Color from 'color';
 import Group from '../Group';
 import Series from '../Series';
 import Element from '../Element';
@@ -15,7 +16,8 @@ const StyledPeriodicTable = styled.div`
   flex-wrap: wrap;
   width: 1332px;
   justify-content: center;
-  margin: 15px auto;
+  margin: 0 auto;
+  padding: 15px 0;
   position: relative;
 `;
 
@@ -61,20 +63,22 @@ class PeriodicTable extends React.Component {
     }
   }
   elementColor(element) {
-    let property;
-    switch (this.props.trend) {
-      case 'Phase':
-        property = 'Phase';
-        break;
-      default:
-        property = this.props.trend;
-        break;
-    }
+    const property = this.props.trend;
     let elementProperty = element[property];
-    if (elementProperty === null) {
+    if (property === 'Phase' && elementProperty === null) {
       elementProperty = 'unknown';
     }
-    const color = this.props.theme.trend[this.props.trend][elementProperty]; // eslint-disable-line
+    let color = this.props.theme.present.trend[property][elementProperty]; // eslint-disable-line
+    if (property === 'AtomicRadius' && elementProperty) {
+      const hue = Math.round(((elementProperty.split(' ')[0] + '0') / 298) * 120);
+      color = Color(`hsl(${hue}, 100%, 50%)`).string();
+    }
+    if (this.props.featuredGroup !== element.Group && this.props.featuredGroup !== '') {
+      color = Color(color).grayscale().string();
+    }
+    if (this.props.featuredSeries !== element.series && this.props.featuredSeries !== '') {
+      color = Color(color).grayscale().string();
+    }
     return color;
   }
   render() {
@@ -89,8 +93,7 @@ class PeriodicTable extends React.Component {
               if (element.category === 8 || element.category === 9) {
                 return false;
               }
-              const { Abbreviation, AtomicNumber, AtomicMass, Name } = this.props.elements[element];
-              return <Element Abbreviation={Abbreviation} AtomicNumber={AtomicNumber} AtomicMass={AtomicMass} Name={Name} key={AtomicNumber} color={this.elementColor(this.props.elements[element])} />; // eslint-disable-line
+              return <Element {...this.props.elements[element]} color={this.elementColor(this.props.elements[element])} />; // eslint-disable-line
             });
             if (groupNumber === 3) {
               groupElements.pop();
@@ -98,7 +101,7 @@ class PeriodicTable extends React.Component {
               groupElements.push(<ElementPlaceholder key="Lanthanides" label="Lanthanides" range="57-71" />, <ElementPlaceholder key="Actinides" label="Actinides" range="89-103" />);
             }
             return ( //eslint-disable-next-line
-              <Group key={groupNumber} block={block}>
+              <Group key={groupNumber} block={block} group={groupNumber}>
                 {groupElements}
               </Group>
             );
@@ -108,8 +111,8 @@ class PeriodicTable extends React.Component {
           this.series.map((series, seriesNumber) => {
             const seriesName = ['Lanthanides', 'Actinides'];
             const seriesElements = series.map((element) => {
-              const { Abbreviation, AtomicNumber, AtomicMass, Name } = this.props.elements[element];
-              return <Element Abbreviation={Abbreviation} AtomicNumber={AtomicNumber} AtomicMass={AtomicMass} Name={Name} key={AtomicNumber} color={this.elementColor(this.props.elements[element])} />; // eslint-disable-line
+              this.props.elements[element]['series'] = seriesName[seriesNumber];
+              return <Element {...this.props.elements[element]} color={this.elementColor(this.props.elements[element])} />; // eslint-disable-line:
             });
             return ( //eslint-disable-next-line
               <Series key={seriesNumber} name={seriesName[seriesNumber]}>
@@ -127,6 +130,8 @@ class PeriodicTable extends React.Component {
 const mapStateToProps = state => ({
   elements: state.table.elements,
   featuredElement: state.table.featuredElement,
+  featuredGroup: state.table.featuredGroup,
+  featuredSeries: state.table.featuredSeries,
   trend: state.table.trend,
 });
 
