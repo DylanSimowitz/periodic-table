@@ -7,7 +7,8 @@ import * as actions from '../../Actions/';
 
 const StyledSelect = styled.select`
   width: 100%;
-  height: 30px;
+  height: 40px;
+  border-radius: 0px;
 `;
 
 class Trend extends React.Component {

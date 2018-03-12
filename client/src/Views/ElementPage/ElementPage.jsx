@@ -16,10 +16,15 @@ const StyledElementPage = styled.div`
   left: 0;
 `;
 
+const StyledModal = styled(Modal)`
+  width: 80%;
+  background-color: none !important;
+`;
+
 const ElementPage = props => (
-  <Modal isOpen onRequestClose={() => props.history.push('/')}>
+  <StyledModal isOpen onRequestClose={() => props.history.push('/')}>
     <ElementPreview element={props.match.params.element} />
-  </Modal>
+  </StyledModal>
 );
 
 const mapStateToProps = state => ({

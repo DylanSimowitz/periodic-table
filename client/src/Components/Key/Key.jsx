@@ -6,19 +6,26 @@ import styled from 'styled-components';
 import * as actions from '../../Actions';
 import Block from './Block';
 import Trend from '../Trend';
+import Atom from '../Atom';
+
+const StyledDiv = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 let Key = (props) => {
   const { className, ...rest } = props; // eslint-disable-line
   return (
     <div className={className}>
       <Trend />
-      <h1 style={{ margin: '0' }}>{props.trend.match(/[A-Z][a-z]+/g).join(' ')}</h1>
-      <div style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center' }}>
+      {/* <h1 style={{ margin: '0' }}>{props.trend.match(/[A-Z][a-z]+/g).join(' ')}</h1> */}
+      <StyledDiv>
         <Block />
-        <div>
-          {props.featuredElement.electronConfiguration}
-        </div>
-      </div>
+        {props.featuredElement.ElectronCount ? <Atom /> : <div />}
+      </StyledDiv>
     </div>
   );
 };
@@ -55,7 +62,7 @@ const mapDispatchToProps = dispatch => ({
 Key.propTypes = {
   trend: PropTypes.string.isRequired,
   featuredElement: PropTypes.shape({
-    electronConfiguration: PropTypes.string,
+    ElectronCount: PropTypes.number,
   }).isRequired,
 };
 

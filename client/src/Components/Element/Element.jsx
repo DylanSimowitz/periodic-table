@@ -109,6 +109,9 @@ class Element extends React.Component {
     this.props.actions.setFeaturedElement(this.props.Name);
   }
   capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
+  handleHover = () => {
+    this.props.actions.setFeaturedElement(this.props.Name);
+  }
 
   render() {
     return (
