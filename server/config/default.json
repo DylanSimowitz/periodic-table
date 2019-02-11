@@ -1,5 +1,5 @@
 {
-  "host": "localhost/elements",
+  "host": "localhost",
   "port": 3030,
   "public": "../../client/build",
   "paginate": {
