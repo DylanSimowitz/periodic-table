@@ -1,10 +1,9 @@
 {
-  "host": "0.0.0.0/elements",
-  "port": 3030,
-  "public": "../public/",
+  "host": "0.0.0.0",
+  "port": "PORT",
   "paginate": {
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://mongo:27017/periodic_api"
+  "mongodb": "MONGODB_URI"
 }

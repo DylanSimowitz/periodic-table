@@ -3,7 +3,7 @@ import Color from 'color';
 const CHANGE_USER = 'CHANGE_USER';
 const RECEIVE_ELEMENTS = 'RECEIVE_ELEMENTS';
 const SET_FEATURED_ELEMENT = 'SET_FEATURED_ELEMENT';
-let API_ENDPOINT = '/elements/elements';
+let API_ENDPOINT = '/elements';
 if (process.env.NODE_ENV === 'development') {
   API_ENDPOINT = 'http://localhost:3030/elements/elements';
 }
@@ -30,7 +30,9 @@ export function setFeaturedKeyItem(item) {
     const state = getState();
     Object.keys(state.theme.present.trend[state.table.trend]).forEach((key) => {
       if (key !== item) {
-        const color = Color(state.theme.present.trend[state.table.trend][key]).grayscale().string();
+        const color = Color(state.theme.present.trend[state.table.trend][key])
+          .grayscale()
+          .string();
         dispatch(changeColor(color, key, state.table.trend));
       }
     });
@@ -50,11 +52,10 @@ export function selectProperty(property) {
 }
 
 export function fetchElements() {
-  return dispatch => (
-      fetch(API_ENDPOINT)
-        .then(response => response.json())
-        .then(json => dispatch(receiveElements(json)))
-  );
+  return dispatch =>
+    fetch(API_ENDPOINT)
+      .then(response => response.json())
+      .then(json => dispatch(receiveElements(json)));
 }
 
 // export function fetchElement(element) {
