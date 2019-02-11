@@ -42,10 +42,10 @@ app.configure(rest());
 app.configure(middleware);
 // Set up our services (see `services/index.js`)
 app.configure(services);
+app.use("*", feathers.static(app.get("public")));
 // Configure a middleware for 404s and the error handler
 app.use(notFound());
 app.use(handler());
 
 app.hooks(appHooks);
-
 module.exports = app;
