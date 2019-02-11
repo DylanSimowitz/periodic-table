@@ -1,0 +1,22 @@
+{
+  "name": "periodic-table",
+  "version": "1.0.0",
+  "description": "Simple periodic table built with React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm install --prefix server && npm install --prefix client && NODE_ENV=development npm run build --prefix client",
+    "start": "npm --prefix server start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.simowitz.com:10022/dsimowitz/elements.git"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "server/node_modules"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

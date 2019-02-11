@@ -12,14 +12,11 @@ const store = configureStore();
 const App = () => (
   <Provider store={store}>
     <Theme>
-      <BrowserRouter basename="/elements">
-        {routes}
-      </BrowserRouter>
+      <BrowserRouter>{routes}</BrowserRouter>
     </Theme>
   </Provider>
 );
 
-App.propTypes = {
-};
+App.propTypes = {};
 
 export default App;
