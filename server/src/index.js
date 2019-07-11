@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-require("newrelic");
 const logger = require("winston");
 const app = require("./app");
 const port = app.get("port");
