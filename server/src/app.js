@@ -17,8 +17,6 @@ const middleware = require("./middleware");
 const services = require("./services");
 const appHooks = require("./app.hooks");
 
-const mongodb = require("./mongodb");
-
 const app = feathers();
 
 // Load app configuration
@@ -35,14 +33,13 @@ app.use("/", feathers.static(app.get("public")));
 
 // Set up Plugins and providers
 app.configure(hooks());
-app.configure(mongodb);
 app.configure(rest());
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
 // Set up our services (see `services/index.js`)
 app.configure(services);
-app.use("*", feathers.static(app.get("public")));
+app.use("static/*", feathers.static(app.get("public")));
 // Configure a middleware for 404s and the error handler
 app.use(notFound());
 app.use(handler());

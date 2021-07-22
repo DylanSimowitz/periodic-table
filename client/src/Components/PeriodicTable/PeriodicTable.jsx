@@ -32,7 +32,9 @@ class PeriodicTable extends React.Component {
     this.props.actions.fetchElements();
   }
   componentWillReceiveProps(nextProps) {
-    this.sortElements(nextProps.elements);
+    if (nextProps.elements) {
+      this.sortElements(nextProps.elements);
+    }
   }
   sortElements(elements) {
     this.sortElementsByGroup(elements);

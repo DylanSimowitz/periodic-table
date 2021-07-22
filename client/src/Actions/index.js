@@ -3,9 +3,9 @@ import Color from 'color';
 const CHANGE_USER = 'CHANGE_USER';
 const RECEIVE_ELEMENTS = 'RECEIVE_ELEMENTS';
 const SET_FEATURED_ELEMENT = 'SET_FEATURED_ELEMENT';
-let API_ENDPOINT = '/elements';
+let API_ENDPOINT = '/elements.json';
 if (process.env.NODE_ENV === 'development') {
-  API_ENDPOINT = 'http://localhost:3030/elements';
+  API_ENDPOINT = 'http://localhost:3030/elements.json';
 }
 const SELECT_PROPERTY = 'SELECT_PROPERTY';
 const SELECT_TREND = 'SELECT_TREND';

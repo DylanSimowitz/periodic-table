@@ -16,6 +16,7 @@ const StyledElementPreview = styled.div`
   height: calc(90px * 2.5);
   box-sizing: border-box;
   display: flex;
+  border: 1px solid black;
   .container {
     display: flex;
     flex-direction: column;
@@ -26,7 +27,7 @@ const StyledElementPreview = styled.div`
     width: calc(74px * 2.5);
     box-sizing: border-box;
     text-align: center;
-    border: 1px solid black;
+    border-right: 1px solid black;
     padding: 5px;
     position: relative;
   }

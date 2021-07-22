@@ -19,7 +19,7 @@ function reducer(state = [], action) {
       return {
         ...state,
         isLoading: false,
-        elements: action.elements[0],
+        elements: action.elements,
       };
     case 'SET_FEATURED_ELEMENT':
       return {
