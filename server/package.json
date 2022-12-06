@@ -28,7 +28,7 @@
     "mocha": "mocha test/ --recursive"
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.20.1",
     "compression": "^1.7.0",
     "cors": "^2.8.4",
     "feathers": "^2.1.7",
